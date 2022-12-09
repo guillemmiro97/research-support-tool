@@ -1,0 +1,58 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+const database = 'app_recerca';
+const collection = 'journals';
+
+use(database);
+
+/*
+title	string
+editorial	string
+ISSN	string
+EISSN	string
+ISSN-10	string
+ISSN-13	string
+quartile	string
+quartile_year	integer
+quartile_webpage	string
+edition	string[ ]
+categories	[categories]
+article_topology	string[]
+webpage	string
+description	string
+tags	string[ ]
+*/
+
+
+
+db.journals.insertOne({
+  "title": "Journal of Engineering Education",
+  "editorial": "Wiley Online Library",
+  "ISSN": "0022-0663",
+  "EISSN": "1937-1822",
+  "ISSN-10": "0022-0663",
+  "ISSN-13": "1937-1822",
+  "quartile": "Q1",
+  "quartile_year": 2019,
+  "quartile_webpage": "https://www.scimagojr.com/journalrank.php?category=2100&out=xls",
+  "edition": [
+    "Social Sciences Citation Index (SSCI)",
+    "Science Citation Index Expanded (SCIE)",
+  ],
+  "categories": [
+    "EDUCATION & EDUCATIONAL RESEARCH - SSCI",
+  ],
+  "article_topology": [
+    "Article",
+    "Array",
+  ],
+  "webpage": "https://onlinelibrary.wiley.com/journal/19371822",
+  "description": "Journal of Engineering Education (JEE) is a peer-reviewed journal that publishes original research and scholarship on engineering education. The journal is published quarterly and is available in print and online. The journal is published by Wiley-Blackwell on behalf of the American Society for Engineering Education (ASEE).",
+  "tags": [
+    "Engineering",
+    "Education",
+    "Research",
+  ],
+})
+
