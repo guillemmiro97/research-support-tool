@@ -4,7 +4,8 @@ class GenericDAO {
     }
 
     async getAll() {
-        const [results] = await global.db.collection(this.collection).find().toArray();
+        const results = await global.db.collection(this.collection).find({}).toArray();
+        console.log(results);
         return results;
     }
 }
