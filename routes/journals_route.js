@@ -37,6 +37,17 @@ router.get("/search/:title", (req, res) => {
         })
 })
 
+//get journal by ISSN
+router.get("/issn/:issn", (req, res) => {
+    jDao.getJournalByISSN(req.params.issn)
+        .then((results) => {
+            res.json(results)
+        })
+        .catch((err) => { //TODO: personalizar error y códigos de error
+            res.json({ error: err })
+        })
+})
+
 //insert new journal
 router.post("/", (req, res) => {
     jDao.insert(req.body)
