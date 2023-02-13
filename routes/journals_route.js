@@ -10,29 +10,29 @@ router.get("/", (req, res) => {
         .then((results) => {
             res.json(results)
         })
-        .catch((err) => {
+        .catch((err) => { //TODO: personalizar error y códigos de error
             res.json({ error: err })
         })
 })
 
 //get journal by title
 router.get("/:title", (req, res) => {
-    jDao.getJournalByTitle(req.params.title)
+    jDao.getDocumentByTitle(req.params.title)
         .then((results) => {
             res.json(results)
         })
-        .catch((err) => {
+        .catch((err) => { //TODO: personalizar error y códigos de error
             res.json({ error: err })
         })
 })
 
 //search journal by title
 router.get("/search/:title", (req, res) => {
-    jDao.searchJournalByTitle(req.params.title)
+    jDao.searchDocumentByTitle(req.params.title)
         .then((results) => {
             res.json(results)
         })
-        .catch((err) => {
+        .catch((err) => { //TODO: personalizar error y códigos de error
             res.json({ error: err })
         })
 })
@@ -40,7 +40,7 @@ router.get("/search/:title", (req, res) => {
 //insert new journal
 router.post("/", (req, res) => {
     jDao.insert(req.body)
-        .then((results) => {
+        .then((results) => { 
             if(results.acknowledged === true) {
                 res.json({ acknowledged: results.acknowledged,
                     response: "Journal inserted" })
@@ -49,7 +49,7 @@ router.post("/", (req, res) => {
                     error: results.error })
             }
         })
-        .catch((err) => {
+        .catch((err) => { //TODO: personalizar error y códigos de error
             console.log(err)
             res.json({ error: err })
         })
