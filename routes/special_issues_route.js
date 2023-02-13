@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
 
 //get Special Issue by title
 router.get("/:title", (req, res) => {
-    siDao.getSpecialIssueByTitle(req.params.title)
+    siDao.getDocumentByTitle(req.params.title)
         .then((results) => {
             res.json(results)
         })
@@ -28,7 +28,7 @@ router.get("/:title", (req, res) => {
 
 //search Special Issue by title
 router.get("/search/:title", (req, res) => {
-    siDao.searchSpecialIssuelByTitle(req.params.title)
+    siDao.searchDocumentByTitle(req.params.title)
         .then((results) => {
             res.json(results)
         })

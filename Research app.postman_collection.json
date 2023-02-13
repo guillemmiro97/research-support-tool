@@ -6,93 +6,122 @@
 	},
 	"item": [
 		{
-			"name": "Get Journals",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/journals",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"journals"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get Journal by title",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/journals/Journal of Engineering Education",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"journals",
-						"Journal of Engineering Education"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Search Journal by title",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/journals/search/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"journals",
-						"search",
-						""
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Insert journal",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n  \"title\": \"Engineering for starters\",\n  \"editorial\": \"Wiley Online published\",\n  \"ISSN\": \"0022-0663\",\n  \"EISSN\": \"1937-1822\",\n  \"ISSN-10\": \"0022-0663\",\n  \"ISSN-13\": \"1937-1822\",\n  \"quartile\": \"Q1\",\n  \"quartile_year\": 2019,\n  \"quartile_webpage\": \"https://www.scimagojr.com/journalrank.php?category=2100&out=xls\",\n  \"edition\": [\n    \"Social Sciences Citation Index (SSCI)\",\n    \"Science Citation Index Expanded (SCIE)\"\n  ],\n  \"categories\": [\n    \"EDUCATION & EDUCATIONAL RESEARCH - SSCI\"\n  ],\n  \"article_topology\": [\n    \"Article\",\n    \"Array\"\n  ],\n  \"webpage\": \"https://onlinelibrary.wiley.com/journal/19371822\",\n  \"description\": \"Journal of Engineering Education (JEE) is a peer-reviewed journal that publishes original research and scholarship on engineering education. The journal is published quarterly and is available in print and online. The journal is published by Wiley-Blackwell on behalf of the American Society for Engineering Education (ASEE).\",\n  \"tags\": [\n    \"Engineering\",\n    \"Education\",\n    \"Research\"\n  ]\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "Journals",
+			"item": [
+				{
+					"name": "Get Journals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/journals",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journals"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:3000/journals/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"journals",
-						""
-					]
+				{
+					"name": "Get Journal by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/journals/Engineering for starters",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journals",
+								"Engineering for starters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert journal",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"The Horrowind Diary\",\n  \"editorial\": \"Wiley Online published\",\n  \"ISSN\": \"0022-0663\",\n  \"EISSN\": \"1937-1822\",\n  \"ISSN-10\": \"0022-0663\",\n  \"ISSN-13\": \"1937-1822\",\n  \"quartile\": \"Q1\",\n  \"quartile_year\": 2019,\n  \"quartile_webpage\": \"https://www.scimagojr.com/journalrank.php?category=2100&out=xls\",\n  \"edition\": [\n    \"Social Sciences Citation Index (SSCI)\",\n    \"Science Citation Index Expanded (SCIE)\"\n  ],\n  \"categories\": [\n    \"EDUCATION & EDUCATIONAL RESEARCH - SSCI\"\n  ],\n  \"article_topology\": [\n    \"Article\",\n    \"Array\"\n  ],\n  \"webpage\": \"https://onlinelibrary.wiley.com/journal/19371822\",\n  \"description\": \"Journal of Engineering Education (JEE) is a peer-reviewed journal that publishes original research and scholarship on engineering education. The journal is published quarterly and is available in print and online. The journal is published by Wiley-Blackwell on behalf of the American Society for Engineering Education (ASEE).\",\n  \"tags\": [\n    \"Engineering\",\n    \"Education\",\n    \"Research\"\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/journals/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journals",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Journal by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/journals/search/sta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"journals",
+								"search",
+								"sta"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
+		},
+		{
+			"name": "Special Isuues",
+			"item": [
+				{
+					"name": "Get Special Issues",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/specialIssues",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"specialIssues"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
