@@ -120,6 +120,76 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get Special Issues by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/specialIssues/Journal of Engineering Education",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"specialIssues",
+								"Journal of Engineering Education"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Special Issue",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"_id\": \"6399bd4270d37dbf30ce3dc8\",\n    \"title\": \"Morning Special\",\n    \"journal\": \"Heliyon\",\n    \"section\": \"1069-4730\",\n    \"webpage\": \"https://onlinelibrary.wiley.com/journal/19371822\",\n    \"submission_deadline\": \"2019-05-18T16:00:00Z\",\n    \"description\": \"Special issue for Journal of Engineering Education\",\n    \"tags\": [\n        \"SpecialIssue\",\n        \"Education\",\n        \"Research\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/specialIssues/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"specialIssues",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Special Issues by title",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/specialIssues/search/en",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"specialIssues",
+								"search",
+								"en"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
