@@ -15,6 +15,7 @@ app.use(morgan('tiny'));
 app.use(helmet());
 
 //routes
+app.use('/landing', require('./routes/landing_route'));
 app.use('/journals', require('./routes/journals_route'));
 app.use('/specialIssues', require('./routes/special_issues_route'));
 
