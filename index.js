@@ -16,6 +16,7 @@ app.use(helmet());
 
 //routes
 app.use('/journals', require('./routes/journals_route'));
+app.use('/specialIssues', require('./routes/special_issues_route'));
 
 
 app.get('*', (req, res) => {
