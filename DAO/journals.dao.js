@@ -11,14 +11,13 @@ class JournalsDAO extends GenericDAO {
     }
 
     async searchJournalByTitle(title) {
-        const [results] = await global.db.collection(this.collection).find({ title: { $regex: title } }).toArray();
+        const results = await global.db.collection(this.collection).find({ title: { $regex: title, $options: 'i' } }).toArray();
         return results;
     }
 
     async insert(journal) {
-
         //check if journal already exists
-        const [results] = await global.db.collection(this.collection).find({ title: journal.title }).toArray();
+        const [results] = await global.db.collection(this.collection).find({ title: journal.title }, ).toArray();
         console.log(results);
         if(results) {
             return { acknowledged: "false", error: "Journal already exists" };
