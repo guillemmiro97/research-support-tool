@@ -34,6 +34,15 @@ class GenericDAO {
             return response;
         }
     }
+
+    async deleteDocumentByTitle(title) {
+        const result = await global.db.collection(this.collection).deleteOne({ title: title });
+        if (result.deletedCount === 1) {
+            return { deleted: "true", response: "Document deleted" };
+        } else {
+            return { deleted: "false", error: "Document not deleted" };
+        }
+    }
 }
 
 module.exports = GenericDAO;
