@@ -37,6 +37,17 @@ router.get("/search/:title", (req, res) => {
         })
 })
 
+//get Journal by tag
+router.get("/tag/:tag", (req, res) => {
+    siDao.getDocumentByTag(req.params.tag)
+        .then((results) => {
+            res.json(results)
+        })
+        .catch((err) => { //TODO: personalizar error y códigos de error
+            res.json({ error: err })
+        })
+})
+
 //insert new Special Issue
 router.post("/", (req, res) => {
     siDao.insert(req.body)
