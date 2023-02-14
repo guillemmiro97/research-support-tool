@@ -66,4 +66,15 @@ router.post("/", (req, res) => {
         })
 })
 
+//delete Special issue by title
+router.delete("/:title", (req, res) => {
+    siDao.deleteDocumentByTitle(req.params.title)
+        .then((results) => {
+            res.json(results)
+        })
+        .catch((err) => { //TODO: personalizar error y códigos de error
+            res.json({ error: err })
+        })
+})
+
 module.exports = router
