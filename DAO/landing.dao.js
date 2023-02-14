@@ -23,6 +23,24 @@ class LandingDAO extends GenericDAO {
         }
     }
 
+    async getAllDocumentsByDocumentType() {
+        try {
+            const collections = await global.db.listCollections().toArray();
+            console.log(collections);
+            const allCollections = [];
+    
+            for (const collection of collections) {
+                let documents = await global.db.collection(collection.name).find().toArray();
+                allCollections.push({ collection: collection.name, documents: documents });
+            }
+    
+            return allCollections;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
+    }
+
 }
 
 module.exports = LandingDAO;
