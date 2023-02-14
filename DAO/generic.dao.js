@@ -18,6 +18,11 @@ class GenericDAO {
         return results;
     }
 
+    async getDocumentByTag(tag) {
+        const results = await global.db.collection(this.collection).find({ tags: { $regex: tag, $options: 'i' } }).toArray();
+        return results;
+    }
+
     async insert(data) {
         //check if journal already exists
         const [results] = await global.db.collection(this.collection).find({ title: data.title }, ).toArray();
