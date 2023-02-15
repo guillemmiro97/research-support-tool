@@ -6,8 +6,13 @@ class JournalsDAO extends GenericDAO {
     }
 
     async getJournalByISSN(issn) {
-        const [results] = await global.db.collection(this.collection).find({ ISSN: issn }).toArray();
-        return results;
+        try {
+            const [results] = await global.db.collection(this.collection).find({ ISSN: issn }).toArray();
+            return results;
+        } catch (error) {
+            console.error(error);
+            return [];
+        }
     }
 }
 

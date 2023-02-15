@@ -59,6 +59,16 @@ router.get("/tag/:tag", (req, res) => {
         })
 })
 
+router.post("/tags", (req, res) => {
+    jDao.getDocumentsByTags(req.body)
+        .then((results) => {
+            res.json(results)
+        })
+        .catch((err) => { //TODO: personalizar error y códigos de error
+            res.json({ error: err })
+        })
+})
+
 //insert new journal
 router.post("/", (req, res) => {
     jDao.insert(req.body)

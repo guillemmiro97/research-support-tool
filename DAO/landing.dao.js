@@ -8,7 +8,6 @@ class LandingDAO extends GenericDAO {
     async getNumbersByDocumentType() {
         try {
             const collections = await global.db.listCollections().toArray();
-            console.log(collections);
             const counts = [];
     
             for (const collection of collections) {
