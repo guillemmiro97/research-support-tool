@@ -8,10 +8,14 @@ const jDao = new JournalsDAO()
 router.get("/", (req, res) => {
     jDao.getAll()
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
         .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+            res.status(400).json({ error: err })
         })
 })
 

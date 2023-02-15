@@ -1,6 +1,7 @@
 //initialization of libraries
 require('dotenv').config();
 const express = require('express');
+const request = require('request');
 const helmet = require('helmet');
 const MongoClient = require('mongodb').MongoClient;
 
@@ -21,7 +22,18 @@ app.use('/specialIssues', require('./routes/special_issues_route'));
 
 
 app.get('*', (req, res) => {
-    res.json({ error: "404"})
+    const url = 'https://http.cat/404';
+
+    request({
+        url: url,
+        encoding: null
+    }, 
+    (err, resp, buffer) => {
+        if (!err && resp.statusCode === 200){
+            res.set("Content-Type", "image/jpeg");
+            res.send(resp.body);
+        }
+    });
 })
 
 app.listen(port, () => {
