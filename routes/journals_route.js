@@ -14,8 +14,8 @@ router.get("/", (req, res) => {
                 res.status(200).json(results)
             }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.status(400).json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
@@ -23,10 +23,14 @@ router.get("/", (req, res) => {
 router.get("/:title", (req, res) => {
     jDao.getDocumentByTitle(req.params.title)
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
@@ -34,10 +38,14 @@ router.get("/:title", (req, res) => {
 router.get("/search/:title", (req, res) => {
     jDao.searchDocumentByTitle(req.params.title)
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
@@ -45,10 +53,14 @@ router.get("/search/:title", (req, res) => {
 router.get("/issn/:issn", (req, res) => {
     jDao.getJournalByISSN(req.params.issn)
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
@@ -56,20 +68,28 @@ router.get("/issn/:issn", (req, res) => {
 router.get("/tag/:tag", (req, res) => {
     jDao.getDocumentByTag(req.params.tag)
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
 router.post("/tags", (req, res) => {
     jDao.getDocumentsByTags(req.body)
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No journals found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 
@@ -78,16 +98,16 @@ router.post("/", (req, res) => {
     jDao.insert(req.body)
         .then((results) => { 
             if(results.acknowledged === true) {
-                res.json({ acknowledged: results.acknowledged,
+                res.status(201).json({ acknowledged: results.acknowledged,
                     response: "Journal inserted" })
             } else {
-                res.json({ acknowledged: results.acknowledged,
+                res.status(400).json({ acknowledged: results.acknowledged,
                     error: results.error })
             }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
+        .catch((err) => { 
             console.log(err)
-            res.json({ error: err })
+            res.status(500).json({ error: err })
         })
 })
 
@@ -95,10 +115,14 @@ router.post("/", (req, res) => {
 router.delete("/:title", (req, res) => {
     jDao.deleteDocumentByTitle(req.params.title)
         .then((results) => {
-            res.json(results)
+            if(results.deleted) {
+                res.status(200).json(results)
+            } else {
+                res.status(400).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })
         })
 })
 

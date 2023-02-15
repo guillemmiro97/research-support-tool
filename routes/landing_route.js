@@ -8,10 +8,14 @@ const lDao = new LandingDao()
 router.get("/getNumbersByDocumentType", (req, res) => {
     lDao.getNumbersByDocumentType()
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No documents found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => {
+            res.status(500).json({ error: err })
         })
 })
 
@@ -19,10 +23,14 @@ router.get("/getNumbersByDocumentType", (req, res) => {
 router.get("/getDocumentsByDocumentType", (req, res) => {
     lDao.getAllDocumentsByDocumentType()
         .then((results) => {
-            res.json(results)
+            if (results.length === 0) {
+                res.status(404).json({ error: "No documents found" })
+            } else {
+                res.status(200).json(results)
+            }
         })
-        .catch((err) => { //TODO: personalizar error y códigos de error
-            res.json({ error: err })
+        .catch((err) => { 
+            res.status(500).json({ error: err })        
         })
 })
 
