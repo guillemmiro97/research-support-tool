@@ -15,6 +15,13 @@ const morgan = require('morgan');
 app.use(morgan('tiny'));
 app.use(helmet());
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Methods", "GET,PUT,PATCH,POST,DELETE");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 //routes
 app.use('/landing', require('./routes/landing_route'));
 app.use('/journals', require('./routes/journals_route'));
