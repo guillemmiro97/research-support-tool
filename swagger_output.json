@@ -38,7 +38,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Retorna tots els journals",
         "parameters": [],
         "responses": {
           "200": {
@@ -56,8 +56,17 @@
         "tags": [
           "journals"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Afegir un nou journal",
+        "parameters": [
+          {
+            "name": "journal",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Journal"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -76,7 +85,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Retorna tots els journals amb el títol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -101,7 +110,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Esborra el journal amb el títol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -128,7 +137,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Retorna els journals amb el títol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -155,7 +164,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Retorna el journal amb el issn passat per paràmetre",
         "parameters": [
           {
             "name": "issn",
@@ -182,7 +191,7 @@
         "tags": [
           "journals"
         ],
-        "description": "",
+        "description": "Retorna tots els journals amb els tags corresponents al paràmetre passat",
         "parameters": [
           {
             "name": "tag",
@@ -209,8 +218,20 @@
         "tags": [
           "journals"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Retorna els journals amb els tags passats per paràmetre en el body",
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -229,7 +250,7 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
+        "description": "Retorna tots els special issues",
         "parameters": [],
         "responses": {
           "200": {
@@ -247,8 +268,17 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Afegir un nou special issue",
+        "parameters": [
+          {
+            "name": "specialIssue",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/SpecialIssue"
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -267,7 +297,7 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
+        "description": "Retorna tots els special issues amb el títol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -292,7 +322,7 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
+        "description": "Esborra el special issue amb el títol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -319,7 +349,7 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
+        "description": "Retorna el special issue amb el titol passat per paràmetre",
         "parameters": [
           {
             "name": "title",
@@ -346,7 +376,7 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
+        "description": "Retorna els special issues amb el tag passat per paràmetre",
         "parameters": [
           {
             "name": "tag",
@@ -373,8 +403,20 @@
         "tags": [
           "specialIssues"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Retorna els special issues amb els tags passats per paràmetre en el body",
+        "parameters": [
+          {
+            "name": "tags",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -393,7 +435,7 @@
         "tags": [
           "landing"
         ],
-        "description": "",
+        "description": "Retorna el nombre de documents per a cada tipus de document",
         "parameters": [],
         "responses": {
           "200": {
@@ -413,7 +455,7 @@
         "tags": [
           "landing"
         ],
-        "description": "",
+        "description": "Retorna tots els documents per a cada tipus de document",
         "parameters": [],
         "responses": {
           "200": {
