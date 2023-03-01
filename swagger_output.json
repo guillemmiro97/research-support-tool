@@ -341,33 +341,6 @@
         }
       }
     },
-    "/specialIssues/issn/{issn}": {
-      "get": {
-        "tags": [
-          "specialIssues"
-        ],
-        "description": "",
-        "parameters": [
-          {
-            "name": "issn",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "404": {
-            "description": "Not Found"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      }
-    },
     "/specialIssues/tag/{tag}": {
       "get": {
         "tags": [
