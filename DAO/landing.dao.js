@@ -49,7 +49,6 @@ class LandingDAO extends GenericDAO {
             return [];
         }
     }
-
 }
 
 module.exports = LandingDAO;

@@ -90,19 +90,24 @@ router.post("/tags", (req, res) => {
 
 //insert new Special Issue
 router.post("/", (req, res) => {
-    siDao.insert(req.body)
-        .then((results) => {
-            if(results.acknowledged === true) {
-                res.status(201).json({ acknowledged: results.acknowledged,
-                    response: "Special Issue inserted" })
-            } else {
-                res.status(400).json({ acknowledged: results.acknowledged,
-                        error: results.error })
-            }
-        })
-        .catch((err) => {
-            res.status(500).json({ error: err })
-        })
+
+    if(!siDao.verifyJsonWebToken(req)) {
+        res.status(401).json({ error: "Unauthorized" })
+    } else {
+        siDao.insert(req.body)
+            .then((results) => {
+                if(results.acknowledged === true) {
+                    res.status(201).json({ acknowledged: results.acknowledged,
+                        response: "Special Issue inserted" })
+                } else {
+                    res.status(400).json({ acknowledged: results.acknowledged,
+                            error: results.error })
+                }
+            })
+            .catch((err) => {
+                res.status(500).json({ error: err })
+            })
+    }
 })
 
 //delete Special issue by title

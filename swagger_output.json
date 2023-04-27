@@ -13,6 +13,20 @@
       "url": "http://www.gnu.org/copyleft/gpl.html"
     }
   },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
   "host": "localhost:3000",
   "basePath": "/",
   "tags": [
@@ -57,6 +71,11 @@
           "journals"
         ],
         "description": "Afegir un nou journal",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "journal",
@@ -269,6 +288,11 @@
           "specialIssues"
         ],
         "description": "Afegir un nou special issue",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "parameters": [
           {
             "name": "specialIssue",
@@ -414,6 +438,43 @@
               "items": {
                 "type": "string"
               }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/landing/login": {
+      "get": {
+        "tags": [
+          "landing"
+        ],
+        "description": "Retorna un token JWT per a l'usuari amb el usuari i la contrasenya passats per paràmetre",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],

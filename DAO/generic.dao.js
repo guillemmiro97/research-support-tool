@@ -8,6 +8,8 @@
 * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later 
 */
 
+const jwt = require("jsonwebtoken");
+
 class GenericDAO {
     constructor(collection) {
         this.collection = collection;
@@ -66,7 +68,6 @@ class GenericDAO {
     async insert(data) {
         //check if journal already exists
         const [results] = await global.db.collection(this.collection).find({ title: data.title }, ).toArray();
-        console.log(results);
         if(results) {
             return { acknowledged: "false", error: "Document already exists" };
         } else {
@@ -86,6 +87,20 @@ class GenericDAO {
         } catch (error) {
             console.error(error);
             return { deleted: "false", error: error };
+        }
+    }
+
+    verifyJsonWebToken(req) {
+        try {
+            const authHeader = req.headers.authorization
+            const token = authHeader.split(" ")[1];
+            
+            if (!token) return false
+
+            jwt.verify(token, process.env.JWT_SECRET);
+            return true
+        } catch (error) {
+            return false
         }
     }
 }

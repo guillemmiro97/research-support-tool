@@ -105,20 +105,24 @@ router.post("/tags", (req, res) => {
 
 //insert new journal
 router.post("/", (req, res) => {
-    jDao.insert(req.body)
-        .then((results) => { 
-            if(results.acknowledged === true) {
-                res.status(201).json({ acknowledged: results.acknowledged,
-                    response: "Journal inserted" })
-            } else {
-                res.status(400).json({ acknowledged: results.acknowledged,
-                    error: results.error })
-            }
-        })
-        .catch((err) => { 
-            console.log(err)
-            res.status(500).json({ error: err })
-        })
+    if(!jDao.verifyJsonWebToken(req)) {
+        res.status(401).json({ error: "Unauthorized" })
+    } else {
+        jDao.insert(req.body)
+            .then((results) => { 
+                if(results.acknowledged === true) {
+                    res.status(201).json({ acknowledged: results.acknowledged,
+                        response: "Journal inserted" })
+                } else {
+                    res.status(400).json({ acknowledged: results.acknowledged,
+                        error: results.error })
+                }
+            })
+            .catch((err) => { 
+                console.log(err)
+                res.status(500).json({ error: err })
+            })
+        }
 })
 
 //delete journal by title
