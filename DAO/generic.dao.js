@@ -54,13 +54,6 @@ class GenericDAO {
     }
 
     async getDocumentsByTags(data) {
-        /*{"tags": [
-            "Engineering",
-            "Education",
-            "Research"
-        ]}*/
-
-        console.log(data.tags);
         try {
             const results = await global.db.collection(this.collection).find({ tags: { $all: data.tags } }).toArray();
             return results;
